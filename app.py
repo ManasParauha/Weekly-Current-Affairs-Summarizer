@@ -950,12 +950,6 @@ def main():
             border-top-color: var(--accent-color) !important;
         }
 
-        /* Test hook hidden */
-        .app-test-hook,
-        [data-testid="stVerticalBlock"]:has(> div .app-test-hook) {
-            display: none !important;
-        }
-
         /* Footer Privacy Note */
         .privacy-note {
             text-align: center;
@@ -1117,14 +1111,6 @@ def main():
                             """,
                             unsafe_allow_html=True,
                         )
-
-                        # Hidden test compatibility hook
-                        with st.container():
-                            st.markdown('<div class="app-test-hook">', unsafe_allow_html=True)
-                            st.header(title_text)
-                            if overview_text:
-                                st.info(overview_text)
-                            st.markdown('</div>', unsafe_allow_html=True)
 
                         # Topics Section
                         topics = summary_data.get("topics", [])

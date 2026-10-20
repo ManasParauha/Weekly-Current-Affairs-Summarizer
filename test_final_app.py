@@ -92,10 +92,9 @@ class TestStreamlitApp(unittest.TestCase):
         self.assertEqual(len(at.download_button), 1)
         self.assertEqual(at.download_button[0].label, "Download Summary PDF")
 
-        # Summary title and overview rendered
-        self.assertGreater(len(at.header), 0)
-        self.assertIn("Weekly Current Affairs Summary", at.header[0].value)
-        self.assertEqual(at.info[0].value, "Key developments across governance, economy, and space.")
+        # Summary title and overview rendered in overview card
+        self.assertTrue(any("Weekly Current Affairs Summary" in m.value for m in at.markdown))
+        self.assertTrue(any("Key developments across governance, economy, and space." in m.value for m in at.markdown))
 
         # Dates table rendered
         self.assertEqual(len(at.table), 1)
