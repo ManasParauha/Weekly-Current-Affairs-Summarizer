@@ -484,51 +484,57 @@ def main():
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-        :root {
-            --bg-page: #FFFFFF;
-            --card-bg: #FFFFFF;
-            --card-bg-secondary: #F6F7F9;
-            --border-color: #E5E7EB;
-            --border-subtle: #F3F4F6;
-            --text-color: #111827;
-            --text-body: #374151;
-            --muted-text: #6B7280;
-            --accent-color: #4F46E5;
-            --accent-hover: #4338CA;
-            --accent-active: #3730A3;
-            --accent-subtle: rgba(79, 70, 229, 0.06);
+        :root,
+        [data-theme="dark"],
+        [data-theme="light"],
+        .stApp,
+        .stApp[data-theme="dark"] {
+            --bg-page: #FFFFFF !important;
+            --card-bg: #FFFFFF !important;
+            --card-bg-secondary: #F6F7F9 !important;
+            --border-color: #E5E7EB !important;
+            --border-subtle: #F3F4F6 !important;
+            --text-color: #111827 !important;
+            --text-body: #374151 !important;
+            --muted-text: #6B7280 !important;
+            --accent-color: #4F46E5 !important;
+            --accent-hover: #4338CA !important;
+            --accent-active: #3730A3 !important;
+            --accent-subtle: rgba(79, 70, 229, 0.06) !important;
+            color-scheme: light !important;
+        }
+
+        /* Force light theme always regardless of browser/system theme */
+        html, body, .stApp {
+            background-color: #FFFFFF !important;
+            color: #111827 !important;
+            color-scheme: light !important;
         }
 
         @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-page: #0E1117;
-                --card-bg: #1A1F2C;
-                --card-bg-secondary: #1E2330;
-                --border-color: #2D3748;
-                --border-subtle: #262C3A;
-                --text-color: #F9FAFB;
-                --text-body: #D1D5DB;
-                --muted-text: #9CA3AF;
-                --accent-color: #6366F1;
-                --accent-hover: #4F46E5;
-                --accent-active: #4338CA;
-                --accent-subtle: rgba(99, 102, 241, 0.12);
+            :root,
+            [data-theme="dark"],
+            .stApp,
+            .stApp[data-theme="dark"] {
+                --bg-page: #FFFFFF !important;
+                --card-bg: #FFFFFF !important;
+                --card-bg-secondary: #F6F7F9 !important;
+                --border-color: #E5E7EB !important;
+                --border-subtle: #F3F4F6 !important;
+                --text-color: #111827 !important;
+                --text-body: #374151 !important;
+                --muted-text: #6B7280 !important;
+                --accent-color: #4F46E5 !important;
+                --accent-hover: #4338CA !important;
+                --accent-active: #3730A3 !important;
+                --accent-subtle: rgba(79, 70, 229, 0.06) !important;
+                color-scheme: light !important;
             }
-        }
-
-        [data-theme="dark"], .stApp[data-theme="dark"] {
-            --bg-page: #0E1117;
-            --card-bg: #1A1F2C;
-            --card-bg-secondary: #1E2330;
-            --border-color: #2D3748;
-            --border-subtle: #262C3A;
-            --text-color: #F9FAFB;
-            --text-body: #D1D5DB;
-            --muted-text: #9CA3AF;
-            --accent-color: #6366F1;
-            --accent-hover: #4F46E5;
-            --accent-active: #4338CA;
-            --accent-subtle: rgba(99, 102, 241, 0.12);
+            html, body, .stApp {
+                background-color: #FFFFFF !important;
+                color: #111827 !important;
+                color-scheme: light !important;
+            }
         }
 
         /* Global Typography */
@@ -687,6 +693,11 @@ def main():
             text-align: center !important;
             transition: border-color 0.2s ease, background-color 0.2s ease !important;
         }
+        [data-testid="stFileUploaderDropzone"] span,
+        [data-testid="stFileUploaderDropzone"] small,
+        [data-testid="stFileUploaderDropzone"] div {
+            color: #6B7280 !important;
+        }
         [data-testid="stFileUploader"] section:hover,
         [data-testid="stFileUploaderDropzone"]:hover {
             border-color: var(--accent-color) !important;
@@ -835,11 +846,6 @@ def main():
             padding: 3px 8px;
             border-radius: 9999px;
             margin-bottom: 8px;
-        }
-        @media (prefers-color-scheme: dark) {
-            .topic-category-pill {
-                filter: brightness(1.25);
-            }
         }
         .topic-card-title {
             font-size: 1.12rem;
